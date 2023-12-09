@@ -1,0 +1,17 @@
+version: "2"
+services:
+  syncAPI:
+    image: "node:18-alpine"
+    working_dir: /home/supreme/sync
+    environment:
+      - DATABASE_URL="mysql://root:1234@192.168.1.144:6603/svaults"
+      # DATABASE_URL="mysql://root:20042002@localhost:3306/svaults"
+      - PORT="8086"
+    volumes:
+      - ./:/home/supreme/sync
+    expose:
+      - "8086"
+    command: "npm start"
+    ports:
+      - 8086:8086
+    # restart: always
